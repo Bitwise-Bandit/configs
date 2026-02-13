@@ -1,0 +1,219 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30, 
+  "exclusive": "true",
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "fixed-center": true,
+    "margin-top": 2,
+    "margin-left": 5,
+    "margin-right": 5,
+    "margin-botton": 0,
+    "spacing": 4, // gaps between modules
+    
+
+  "modules-left": [
+     "custom/arch",
+    "group/controls",
+       ],
+  "group/workspacegroup":{
+    "orientation": "horizontal",
+    "modules": [
+    "sway/workspaces",
+    "niri/workspaces",
+    "sway/scratchpad",
+    ]
+  },
+  "group/controls": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+    //  "custom/separator",
+      "backlight",
+    //  "custom/separator",
+      "network"
+    ]
+  },
+ 
+  "modules-center": [
+    "group/workspacegroup",
+    "group/wallspy"
+  ],
+  "modules-right": [
+    "group/stats",
+    "group/power"
+  ],
+
+ "group/controls": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+     // "custom/separator",
+      "backlight",
+     // "custom/separator",
+      "network"
+    ]
+  },
+  "group/stats": {
+    "orientation": "horizontal",
+    "modules": [
+      "cpu",
+     // "custom/separator",
+      "memory",
+     // "custom/separator",
+      // "disk",
+      // "custom/separator",
+      "temperature"
+    ]
+  },
+
+  "group/power": {
+    "orientation": "horizontal",
+    "modules": [
+      "battery",
+  "power-profiles-daemon"
+    ]
+  }, 
+  "group/wallspy": {
+    "orientation": "horizontal",
+    "modules": [
+      "clock"
+    ]
+  },
+
+
+ "custom/separator": {
+    "format": "|"
+  },
+
+"custom/arch": {
+   "format": " 󰣇  ", 
+    "tooltip": "Next wallpaper",
+    "on-click": "/home/vis/.config/sway/scripts/wallpaper-switcher.sh",
+    "interval": 3600 // update once per hour; can be set to 0 for static icon
+},
+  "power-profiles-daemon": {
+       "format": "{icon}",
+       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+       "tooltip": true,
+       "format-icons": {
+         "default": "",
+         "performance": "",
+         "balanced": "",
+         "power-saver": ""
+       }
+     },
+
+  "sway/workspaces": {
+    "all-outputs": true,
+    "warp-on-scroll": true,
+    "enable-bar-scroll": false,
+    "format": "{icon}",
+    "format-icons": {}
+  },
+  "niri/workspaces": {
+    "disable-scroll": false,
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": false,
+    "format": "{icon}",
+   },
+
+  "sway/window": {
+    "max-length": 15,
+    "format": "{}",
+    "tooltip": false,
+  },
+   
+  "sway/scratchpad": {
+    "format": "  {count}",
+    "show-empty": false,
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}"
+  },
+
+  "disk": {
+    "interval": 60,
+    "path": "/",
+    "format": "  {}%",
+    "tooltip-format": "{used}/{total}"
+  },
+
+  "cpu": {
+    "interval": 1,
+    "format": "  {}%",
+    "tooltip-format": "{usage}%",
+  },
+
+  "memory": {
+    "interval": 1,
+    "format": "   {}%",
+    "tooltip-format": "{used}/{total} GiB",
+  },
+
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+    "interval": 5,
+    "tooltip": false,
+    "thermal-zone": 1,
+    "critical-threshold": 70,
+    "format": " {temperatureC}°C",
+    "format-critical": " {temperatureC}°C (Critical!!)"
+  },
+
+  "network": {
+    "format-wifi": "   {signalStrength}% ",
+    "format-ethernet": "  {essid}",
+    "format-disconnected": "  Disconnected",
+    "interval": 5,
+    "tooltip-format-wifi": " {bandwidthDownBytes} |  {bandwidthUpBytes}",
+  },
+
+   "pulseaudio": {
+    "format": "   {volume}%",
+    "format-muted": "   ",
+    "tooltip-format": "{desc}"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "scroll-step": 5,
+    "format": "  {percent}%",
+    "tooltip": false
+  },
+
+  "battery": {
+    "interval": 1,
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "  {capacity}%",
+    "format-alt": "   {time}",
+    "format-charging": " {capacity}%",
+    "format-discharging": "  {capacity}%",
+    "format-critical": "  {capacity}% (Critical!!)",
+    "format-charging-warning": " {capacity}%",
+    "format-charging-critical": " {capacity}%",
+    "format-discharging-critical": "  {capacity}% (critical!!)",
+    "tooltip-format": "{time} remaining",
+    "tooltip-format-charging": "{time} until full",
+    "tooltip-format-discharging": "{time} remaining",
+
+  },
+  "clock": {
+   "format": " {:%d, %b | %I:%M %p} ", // might need  
+   "format-alt": "     {:%a | %d %b %Y} ",
+    "tooltip": true,
+   "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>", 
+        "calendar": {
+     "format": {
+       "today": "<span foreground='#B22222'><b>{}</b></span>"
+     }
+   }
+
+  }
+}
+

@@ -1,0 +1,375 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+@import "themes/folke.css";
+/* Change this import to switch themes */
+window#waybar {
+  background-color:  rgba(22,20,32,0);         /* rgba(0,0,0,0.99); */
+  color: @foreground;
+  border-radius: 90px;
+  padding: 0px;
+}
+
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+
+/* ========================
+   GROUP CONTAINER STYLES
+   ======================== */
+/* Common styling for all group containers */
+#menu,
+#datetime,
+#stats,
+#wallspy,
+#controls,
+#systray,
+#power {
+  border-radius: 90px;
+  padding: 2px 3px;
+  background-color:  rgba(22,20,32,0.9);
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: 600;
+}
+
+
+#datetime,
+#window,
+#stats,
+#controls {
+  /* padding: 2px 3px; */
+  background-color: rgba(22,20,32,0.9);
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+#window,
+#scratchpad {
+  padding: 2px 2px;
+  background-color:  rgba(22,20,32,0);
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+
+/* Workspaces Styling */
+#workspacegroup {
+  background-color:  rgba(22,20,32,0.9);
+  padding: 4px ;
+  margin: 0px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+#workspaces button,
+#workspaces button:hover,
+#workspaces button.visible:hover,
+#workspaces button.active,
+#workspaces button.active:hover,
+#workspaces button.urgent {
+  padding: 0px 4px;
+  color: white;
+  border-radius: 99px;
+  font-weight: 600;
+}
+
+#workspaces button.visible {
+    padding: 0px 5px;
+  background: @clock;
+  color: black;
+  font-weight: 600;
+}
+
+#workspaces button:hover,
+#workspaces button.visible:hover {
+  background: @background;
+  color: @foreground;
+  font-weight: 600;
+}
+
+#workspaces button.urgent {
+  background: @critical;
+  font-weight: 600;
+}
+
+#custom-arch { 
+  background-color: rgba(22,20,32,0.9);
+  padding: 2px 4px;
+  margin: 2px;
+  border-radius: 50px;
+  color: @cpu;
+}
+
+#clock {
+  color: @clock;
+}
+
+#battery {
+  padding: 2px 4px;
+  margin: 2px;
+  border-radius: 30px;
+
+  color: @battery;
+}
+#battery.charging, #battery.plugged { 
+     color: #ffffff; 
+     background-color: #00965F; 
+ } 
+
+#disk {
+  padding: 2px 4px;
+  margin: 2px;
+  border-radius: 30px;
+color: @disk;
+}
+
+#cpu {
+  padding: 2px 4px;
+  margin: 2px;
+  border-radius: 30px;
+color: @cpu;
+}
+
+#memory {
+  padding: 2px 4px;
+  margin: 2px;
+  border-radius: 30px;
+color: @memory;
+}
+
+#temperature {
+  padding: 2px 4px;
+  margin: 2px;
+  border-radius: 30px;
+color: @temperature;
+}
+
+#network {
+  padding: 2px 4px;
+  margin: 2px;
+  border-radius: 30px;
+  color: @network;
+}
+
+#pulseaudio {
+  padding: 2px 4px;
+  margin: 2px;
+  border-radius: 30px;
+
+  color: @pulseaudio;
+}
+
+#pulseaudio.muted {
+  color: @critical;
+}
+
+
+#backlight {
+  padding: 2px 4px;
+  margin: 2px;
+  border-radius: 30px;
+color: @backlight;
+}
+
+#temperature {
+  padding: 2px 4px;
+  margin: 2px;
+  border-radius: 30px;
+
+  color: @temperature;
+}
+
+/* Conditional Colors */
+#network.connected {
+  color: @good;
+}
+
+#network.disconnected {
+  color: @critical;
+}
+
+#temperature.critical {
+  color: @critical;
+}
+#battery.charging {
+  color: @good;
+}
+
+#battery.warning {
+  color: @warning;
+}
+
+#battery.critical {
+  color: @critical;
+  border: 2px solid @critical;
+}
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    background-color: #f53c3c;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+
+#pulseaudio.muted {
+    color: @critical;
+}
+
+#wireplumber {
+    background-color: #fff0f5;
+    color: #000000;
+}
+
+#wireplumber.muted {
+    background-color: #f53c3c;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#tray {
+    background-color: #2980b9;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#mpd {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+#language {
+    background: #00b093;
+    color: #740864;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+
+#scratchpad.empty {
+	background-color: transparent;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    background-color: #cf5700;
+}
+
+#privacy-item.audio-in {
+    background-color: #1ca000;
+}
+
+#privacy-item.audio-out {
+    background-color: #0069d4;
+} 

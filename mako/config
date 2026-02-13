@@ -1,0 +1,15 @@
+# General
+default-timeout=3000
+width=350
+height=200
+padding=12
+border-size=2
+layer=overlay
+font=monospace 10
+
+# Colors
+background-color=#242729
+text-color=#dedede
+border-color=#67b0e8
+progress-color=source #8a9887
+
